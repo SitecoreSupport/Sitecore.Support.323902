@@ -23,7 +23,10 @@ namespace Sitecore.Support.FXM.Pipelines.Tracking.RegisterPageEvent
         Item pageEventItem = args.PageEventItem;
         ContactOutcome contactOutcome = new ContactOutcome(newID, pageEventItem.ID, contactId)
         {
-          DateTime = DateTime.UtcNow.Date,
+          #region Fix 323902
+          DateTime = DateTime.UtcNow,
+          #endregion
+
           InteractionId = interactionId,
           MonetaryValue = args.EventParameters.MonetaryValue
         };
